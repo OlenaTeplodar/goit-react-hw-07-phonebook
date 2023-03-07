@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 300px;
+  width: 600px;
   padding: 15px;
+  margin-left: 20px;
+  
 };
 
 .massage {

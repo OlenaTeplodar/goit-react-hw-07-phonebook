@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { Notify } from 'notiflix';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addNewContact } from 'redux/contacts/contactsSlice';
-import { getContacts } from 'redux/contacts/contactsSelector';
+import { addNewContact } from 'redux/contacts/contacts-slice';
+import { getContacts } from 'redux/contacts/contacts-selector';
 import css from './ContactForm.module.css';
-
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -13,25 +12,26 @@ const ContactForm = () => {
 
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
-  
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
     switch (name) {
-      case 'name': setName(value);
+      case 'name':
+        setName(value);
         break;
-      
-      case 'number': setNumber(value);
+
+      case 'number':
+        setNumber(value);
         break;
-      
+
       default:
-        throw new Error("This option is not true")
+        throw new Error('This option is not true');
     }
   };
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    
+
     const isNameAdded = contacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
@@ -48,8 +48,6 @@ const ContactForm = () => {
     setName('');
     setNumber('');
   };
-    
- 
 
   return (
     <div className={css.wrapper}>
@@ -96,4 +94,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter } from 'redux/filter/filterSlice';
-import { getFilter } from 'redux/filter/filterSelector';
+import { setFilter } from 'redux/filter/filter-slice';
+import { getFilter } from 'redux/filter/filter-selector';
 
 import css from './Filter.module.css';
 
@@ -10,21 +10,18 @@ const Filter = () => {
 
   return (
     <div className={css.container}>
-      <label className={css.label}>Find contacts by name</label>
-      <input
-        className={css.input}
-        type="text"
-        name="filter"
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        required
-        value={filter}
-        onChange={e => dispatch(setFilter(e.target.value))}
-      />
+      <label className={css.label}>
+        Find contacts by name
+        <input
+          className={css.input}
+          type="text"
+          required
+          value={filter}
+          onChange={e => dispatch(setFilter(e.target.value))}
+        />
+      </label>
     </div>
   );
 };
 
 export default Filter;
-
-
