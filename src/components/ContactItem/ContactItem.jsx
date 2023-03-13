@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { deleteContact } from 'redux/contacts/contacts-slice';
+import { deleteContactById } from 'redux/operations';
 import css from './ContactItem.module.css';
 
 const ContactItem = ({ id, name, number }) => {
@@ -13,7 +13,7 @@ const ContactItem = ({ id, name, number }) => {
       <button
         type="button"
         className={css.btnContactRemove}
-        onClick={() => dispatch(deleteContact(id))}
+        onClick={() => dispatch(deleteContactById(id))}
       >
         Delete
       </button>

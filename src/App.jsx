@@ -15,6 +15,7 @@ const App = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
+  console.log(contacts);
   const isContacts = Boolean(contacts.length);
 
   return (
