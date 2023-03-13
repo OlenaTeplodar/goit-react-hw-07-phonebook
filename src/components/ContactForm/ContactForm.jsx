@@ -1,16 +1,13 @@
 import { useState } from 'react';
-import { Notify } from 'notiflix';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { addNewContact } from 'redux/contacts/contacts-slice';
-import { getContacts } from 'redux/contacts/contacts-selector';
 import css from './ContactForm.module.css';
+import { addContact } from 'redux/operations';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const handleChange = e => {
@@ -32,19 +29,7 @@ const ContactForm = () => {
   const handleSubmit = evt => {
     evt.preventDefault();
 
-    const isNameAdded = contacts.some(
-      contact => contact.name.toLowerCase() === name.toLowerCase()
-    );
-    const isNumberAdded = contacts.some(contact => contact.number === number);
-
-    if (isNameAdded) {
-      Notify.failure(`${name} is alredy in contacts`);
-      return;
-    } else if (isNumberAdded) {
-      Notify.failure(`${number} is alredy in contacts`);
-      return;
-    }
-    dispatch(addNewContact(name, number));
+    dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
   };
@@ -66,7 +51,7 @@ const ContactForm = () => {
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
-              id={name}
+              // id={name}
             />
           </div>
           <div className={css.container}>
