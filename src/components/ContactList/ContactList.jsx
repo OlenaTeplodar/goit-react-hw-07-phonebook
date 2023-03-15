@@ -10,7 +10,7 @@ const ContactList = () => {
   return (
     <>
       {contacts.length === 0 && (
-        <p className={css.massage}>There is no contact</p>
+        <p className={css.message}>There is no contact</p>
       )}
       <ul className={css.list}>
         {contacts.map(({ id, name, number }) => {

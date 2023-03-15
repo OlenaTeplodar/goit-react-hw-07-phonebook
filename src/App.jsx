@@ -9,13 +9,13 @@ import Filter from './components/Filter';
 
 const App = () => {
   const contacts = useSelector(getContacts);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  console.log(contacts);
   const isContacts = Boolean(contacts.length);
 
   return (
@@ -23,6 +23,7 @@ const App = () => {
       <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>
+
       {isContacts && <Filter />}
       {isContacts && <ContactList />}
       {!isContacts && <p>No contacts in list</p>}
