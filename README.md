@@ -1,1 +1,1 @@
-Phonebook - React, React-axios, mokapi-io
+Phonebook - React, React-axios, Redux, mockapi-io
